@@ -1,3 +1,4 @@
+from tkinter import N
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.models import User
@@ -13,25 +14,29 @@ from .models import UserFollows
 
 @login_required
 def abonnement(request):
-    breakpoint()
     titre = "Onglet d'abonnements"
     # users = User.objects.all()
     user_follows = UserFollows.objects.all()
     user = request.user
+    name = request.user.username
     subscribers = user.followed_by.all()
     if request.method == "POST":
-        try:
-            entry = request.POST['followed_user']
-            user_to_follow = User.objects.get(username=entry)
-            UserFollows.objects.create(user=request.user,
-                                       followed_user=user_to_follow,
-                                       )
-        except Exception:
+        entry = request.POST['followed_user']
+        if not entry != name:
             formulaire = NouveauxAbonnement(request.POST)
-            messages.error(request, 'Erreur')
+            messages.error(request, 'Vous ne pouvez pas vous ajouter')
         else:
-            messages.success(request, "Utilisateur suivi !")
-            return redirect("abonnement")
+            try:
+                user_to_follow = User.objects.get(username=entry)
+                UserFollows.objects.create(user=request.user,
+                                           followed_user=user_to_follow,
+                                           )
+            except Exception:
+                formulaire = NouveauxAbonnement(request.POST)
+                messages.error(request, 'Erreur')
+            else:
+                messages.success(request, "Utilisateur suivi !")
+                return redirect("abonnement")
     else:
         formulaire = NouveauxAbonnement()
 
