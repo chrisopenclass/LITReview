@@ -15,7 +15,6 @@ from .models import UserFollows
 @login_required
 def abonnement(request):
     titre = "Onglet d'abonnements"
-    # users = User.objects.all()
     user_follows = UserFollows.objects.all()
     user = request.user
     name = request.user.username
