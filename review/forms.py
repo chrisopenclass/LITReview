@@ -5,9 +5,9 @@ from .models import Ticket, Review
 class FormulaireTicket(forms.ModelForm):
     class Meta:
         model = Ticket
-        fields = ['title', 'description']
+        fields = ['titre', 'description']
 
-        labels = {"title": "Titre",
+        labels = {"titre": "Titre",
                   "description": "Description"
                   }
 

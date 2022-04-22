@@ -8,13 +8,13 @@ from django.urls import reverse
 
 class Ticket(models.Model):
     # model des tickets pour la bdd
-    title = models.CharField(max_length=128, blank=False)
+    titre = models.CharField(max_length=128, blank=False)
     description = models.TextField(max_length=2048, blank=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     date_creation = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return self.title
+        return self.titre
 
     def get_absolute_url(self):
         return reverse("ticket", kwargs={"pk": self.pk})

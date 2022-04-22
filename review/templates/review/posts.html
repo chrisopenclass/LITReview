@@ -7,11 +7,8 @@
         <section >
             <div >Vous avez demandé une critique</div>
             <div>{{ ticket.time_created }}</div>
-            <h3>{{ ticket.title }}</h3>
-            <p>{{ ticket.description }}</p>
-            {% if ticket.image %}
-                <img class="ticket__image" src="{{ ticket.image.url }}">
-            {% endif %}    
+            <h3>{{ ticket.titre }}</h3>
+            <p>{{ ticket.description }}</p>   
             <strong><a class="link-primary" href="{% url 'ticket-update' ticket.pk %}">Modifier</a></strong>
             <strong><a class="link-primary" href="{% url 'ticket-delete' ticket.pk %}">Supprimer</a></strong>
         </section>
@@ -35,7 +32,7 @@
                     <div>{{review.ticket.user}} a demandé une critique</div>
                 <div>{{review.ticket.time_created}}</div>
                 {% endif %}
-                <h3 >{{ review.ticket.title }}</h3>
+                <h3 >{{ review.ticket.titre }}</h3>
                 <p >{{ review.ticket.description }}</p>
             </section>
         </section>

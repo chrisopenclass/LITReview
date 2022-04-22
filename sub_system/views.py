@@ -13,8 +13,9 @@ from .models import UserFollows
 
 @login_required
 def abonnement(request):
+    breakpoint()
     titre = "Onglet d'abonnements"
-    users = User.objects.all()
+    # users = User.objects.all()
     user_follows = UserFollows.objects.all()
     user = request.user
     subscribers = user.followed_by.all()

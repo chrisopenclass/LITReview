@@ -7,7 +7,7 @@
             <div>{{ post.user.username }} a demandé une critique</div>
             <div>{{ post.time_created }}</div>
         {% endif %}
-        <h3 >{{ post.title }}</h3>
+        <h3 >{{ post.titre }}</h3>
         <p >{{ post.description }}</p>
         {% if not post.ticket %}
             <strong><a class="btn btn-dark" href="{% url 'creer_revue_ticket' id_ticket=post.pk %}">Créer une critique</a></strong>
@@ -24,7 +24,7 @@
     <div>{{post.ticket.user.username}} a demandé une critique</div>
     <div>{{post.ticket.date_creation}}</div>
 {% endif %}
-    <h3 >{{ post.ticket.title }}</h3>
+    <h3 >{{ post.ticket.titre }}</h3>
     <p >{{ post.ticket.description }}</p>
 </div>
 </div>

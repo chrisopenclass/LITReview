@@ -4,7 +4,7 @@ from django.contrib import messages
 
 
 def register(request):
-    title = "S'enregistrer"
+    titre = "S'enregistrer"
     if request.method == 'POST':
         form = UserCreationForm(request.POST)
         if form.is_valid():
@@ -15,5 +15,5 @@ def register(request):
     else:
         form = UserCreationForm()
     return render(request, 'authentication/register.html', {'form': form,
-                                                            'title': title
+                                                            'titre': titre
                                                             })

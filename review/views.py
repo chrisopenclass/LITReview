@@ -13,10 +13,10 @@ from .models import Ticket, Review
 
 @login_required
 def creer_ticket(request):
-    title = "Créer un ticket"
+    titre = "Créer un ticket"
     if request.method == "POST":
         try:
-            Ticket.objects.create(title=request.POST['title'],
+            Ticket.objects.create(titre=request.POST['titre'],
                                   description=request.POST['description'],
                                   user=request.user
                                   )
@@ -27,14 +27,14 @@ def creer_ticket(request):
             return redirect("tableau_de_bord")
     else:
         form = FormulaireTicket(request.POST, request.FILES)
-    return render(request, 'review/creer_ticket.html', {'title': title,
+    return render(request, 'review/creer_ticket.html', {'titre': titre,
                                                         'form_ticket': form
                                                         })
 
 
 @login_required
 def creer_revue(request):
-    title = "Créer une review"
+    titre = "Créer une review"
     if request.method == "POST":
         try:
             ticket_instance = Ticket.objects.create(
@@ -58,7 +58,7 @@ def creer_revue(request):
         form_review = FormulaireRevue()
         form_ticket = FormulaireTicket()
     return render(request, 'review/creer_revue.html', {
-                                                    'title': title,
+                                                    'titre': titre,
                                                     'form_review': form_review,
                                                     'form_ticket': form_ticket
                                                     })
@@ -66,7 +66,7 @@ def creer_revue(request):
 
 @login_required
 def creer_revue_ticket(request, id_ticket=None):
-    title = "Créer une review"
+    titre = "Créer une review"
 
     existing_ticket = Ticket.objects.get(pk=id_ticket)
 
@@ -87,7 +87,7 @@ def creer_revue_ticket(request, id_ticket=None):
     else:
         form_review = FormulaireRevue()
     return render(request, 'review/creer_revue_ticket.html', {
-                                            'title': title,
+                                            'titre': titre,
                                             'form_review': form_review,
                                             'existing_ticket': existing_ticket
                                             })
@@ -135,11 +135,11 @@ def tableau_de_bord(request):
 
 @login_required
 def posts(request):
-    title = "Posts"
+    titre = "Posts"
     current_user = request.user
     tickets = Ticket.objects.filter(user=current_user)
     reviews = Review.objects.filter(user=current_user)
-    context = {"title": title,
+    context = {"titre": titre,
                "tickets": tickets,
                "reviews": reviews,
                "current_user": current_user,
