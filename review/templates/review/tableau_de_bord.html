@@ -1,0 +1,26 @@
+{% extends "index.html" %}
+{% block content %}
+<h2 style="text-align: center;">demander ou créer une critique</h2>
+<div class="navbar navbar-light bg-light">
+        <strong><a class="navbar-brand" href="{% url 'creer_ticket'%}">Demander une critique</a></strong>
+        <strong><a class="navbar-brand" href="{% url 'creer_revue'%}">Créer une critique</a></strong>
+    </div>
+
+    <h2 style="text-align: center;">liste des critique créer</h2>
+    <ul class="list-group">
+    {% for post in posts %}
+        {% if post.content_type == 'REVIEW' %}
+        <li class="list-group-item">{% include 'review/critique_creer.html' %} </li>
+        {% endif %}
+    {% endfor %} 
+    </ul>
+
+    <h2 style="text-align: center;">liste des critique demander</h2>
+    <ul class="list-group">
+    {% for post in posts %}
+        {% if post.content_type == 'TICKET' %}   
+        <li class="list-group-item">{% include 'review/critique_demander.html' %}</li>
+        {% endif %}
+    {% endfor %} 
+    </ul>
+{% endblock content%}
