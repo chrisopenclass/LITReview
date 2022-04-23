@@ -1,4 +1,3 @@
-from tkinter import N
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.models import User
@@ -38,7 +37,6 @@ def abonnement(request):
                 return redirect("abonnement")
     else:
         formulaire = NouveauxAbonnement()
-
     return render(request, 'sub_system/abonnement.html', {
                                                 'titre': titre,
                                                 'form': formulaire,
