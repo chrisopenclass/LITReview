@@ -1,12 +1,12 @@
 {% extends "index.html" %}
 {% block content %}
-<h2 style="text-align: center;">demander ou créer une critique</h2>
+<h2 style="text-align: center;">Demander ou créer une critique</h2>
 <div class="navbar navbar-light bg-light">
         <strong><a class="navbar-brand" href="{% url 'creer_ticket'%}">Demander une critique</a></strong>
         <strong><a class="navbar-brand" href="{% url 'creer_revue'%}">Créer une critique</a></strong>
     </div>
 
-    <h2 style="text-align: center;">liste des critique créer</h2>
+    <h2 style="text-align: center;">Liste des critiques créées</h2>
     <ul class="list-group">
     {% for post in posts %}
         {% if post.content_type == 'REVIEW' %}
@@ -15,7 +15,7 @@
     {% endfor %} 
     </ul>
 
-    <h2 style="text-align: center;">liste des critique demander</h2>
+    <h2 style="text-align: center;">Liste des critiques demandées</h2>
     <ul class="list-group">
     {% for post in posts %}
         {% if post.content_type == 'TICKET' %}   

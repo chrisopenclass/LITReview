@@ -1,12 +1,12 @@
 {% extends "index.html" %}
 {% block content %}
-    <h2 style="text-align: center;">entrez le nom de la personne que vous souhaitez suivre</h2>
+    <h2 style="text-align: center;">Entrez le nom de la personne que vous souhaitez suivre</h2>
     <form action="" method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         {{ form }}
         <input type="submit" class="btn btn-info" value="Envoyer">
     </form>
-    <h2 style="text-align: center;">liste de vos Abonnements</h2>
+    <h2 style="text-align: center;">Liste de vos Abonnements</h2>
     <ul class="list-group">
         {% for user in user_follows %}
             {% if  user.user == current_user%}
@@ -17,7 +17,7 @@
         {% empty %}
             <p>Vous ne suivez aucun utilisateurs</p> 
         {% endfor %} 
-    <h2 style="text-align: center;">liste de vos abonnés</h2>
+    <h2 style="text-align: center;">Liste de vos abonnés</h2>
     <ul class="list-group list-group-flush" >
         {% for subscriber in subscribers %}
             <li class="list-group-item">{{ subscriber.user }}</li>

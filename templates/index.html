@@ -17,7 +17,7 @@
         {% if user.is_authenticated %}
         <div>Utilisateur connecté : {{ user.username }}
             <div class="navbar navbar-light bg-light">
-                <a class="navbar-brand" href="{% url 'tableau_de_bord'%}">tableau de bord</a>
+                <a class="navbar-brand" href="{% url 'tableau_de_bord'%}">Tableau de bord</a>
                 <a class="navbar-brand" href="{% url 'posts'%}">Posts</a>
                 <a class="navbar-brand" href="{% url 'abonnement'%}">Abonnements</a>
                 <button class="btn btn-danger" onclick="location.href='{% url 'deconnexion' %}'">Se déconnecter</button>
