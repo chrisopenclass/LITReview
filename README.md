@@ -23,4 +23,4 @@
 
 this projest use [flake8](https://flake8.pycqa.org/en/latest/) as linner
 
-- To run the linner you just need to do  <code>flake8</code>
+- To run the linner do <code>flake8</code> in the LITreview directory 
