@@ -1,40 +1,41 @@
 {% extends "index.html" %}
 {% block content %}
+
     <h2 style="text-align: center;">Vos Posts</h2>
 
     {% comment %} Bloc Ticket {% endcomment %}
+    <h3 style="text-align: center;">Critique que vous demandez</h3>
     {% for ticket in tickets %}
-        <section >
-            <div >Vous avez demandé une critique</div>
-            <div>{{ ticket.time_created }}</div>
-            <h3>{{ ticket.titre }}</h3>
-            <p>{{ ticket.description }}</p>   
+
+    <div class="d-flex justify-content-center" style="margin-top: 15px;">
+        <ul class ="list-group col-md-6">
+            <div class="row row-cols-2">
+                <div> le : {{ ticket.date_creation }}</div>
+            <li class="list-group-item">titre : {{ ticket.titre }}</li>
+            <li class="list-group-item">description : {{ ticket.description }}</li>   
             <strong><a class="link-primary" href="{% url 'ticket-update' ticket.pk %}">Modifier</a></strong>
             <strong><a class="link-primary" href="{% url 'ticket-delete' ticket.pk %}">Supprimer</a></strong>
-        </section>
-    {% endfor %}
+            </div>
+        </div>
+        </div>
+    </div>
 
+    {% endfor %}
     {% comment %} Bloc review {% endcomment %}
     {% for review in reviews %}
-        <section >
-                <div>Vous avez publié une critique</div>
-                <div>{{ review.time_created }}</div>
-                <h3>{{ review.headline }}</h3>
-                <div>Note: {{review.rating}}<span> ☆</span>
-                </div>
-                <div>{{ review.body }}</div></p>
+        <section class="d-flex justify-content-center" style="margin-top: 15px;">
+                <div>Vous avez publié une critique </div>
+                <ul class ="list-group col-md-6">
+                <div> le : {{ review.date_creation }}</div>
+                <div class="row row-cols-2">
+                    <li class="list-group-item">titre : {{ review.titre }}</li>
+                        <li class="list-group-item">Note: {{review.note}}<span> ☆</span> </li>
+                
+                <li class="list-group-item"> description : {{ review.content }}</li>
                 <strong><a class="link-primary" href="{% url 'review-update' review.pk %}">Modifier</a></strong>
                 <strong><a class="link-primary" href="{% url 'review-delete' review.pk %}">Supprimer</a></strong>
-            <section>
-                {% if review.ticket.user == current_user %}
-                    <div>Vous avez demandé une critique</div>
-                {% else %}
-                    <div>{{review.ticket.user}} a demandé une critique</div>
-                <div>{{review.ticket.time_created}}</div>
-                {% endif %}
-                <h3 >{{ review.ticket.titre }}</h3>
-                <p >{{ review.ticket.description }}</p>
-            </section>
+        </div>
+            </ul>
         </section>
     {% endfor %}
      

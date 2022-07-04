@@ -7,20 +7,24 @@
     </div>
 
     <h2 style="text-align: center;">Liste des critiques créées</h2>
-    <ul class="list-group">
     {% for post in posts %}
+    <div class="d-flex justify-content-center" style="margin-top: 5px;">
+        <ul class="list-group col-md-6">
         {% if post.content_type == 'REVIEW' %}
         <li class="list-group-item">{% include 'review/critique_creer.html' %} </li>
         {% endif %}
-    {% endfor %} 
     </ul>
-
+</div>
+    {% endfor %} 
+    
     <h2 style="text-align: center;">Liste des critiques demandées</h2>
-    <ul class="list-group">
     {% for post in posts %}
+    <div class="d-flex justify-content-center" style="margin-top: 5px;">
+        <ul class="list-group col-md-6">
         {% if post.content_type == 'TICKET' %}   
         <li class="list-group-item">{% include 'review/critique_demander.html' %}</li>
         {% endif %}
-    {% endfor %} 
     </ul>
+</div>
+    {% endfor %} 
 {% endblock content%}

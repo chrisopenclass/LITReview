@@ -1,11 +1,9 @@
 <div class="container">
-    <div class="row row-cols-2"></div>
+    <div class="row row-cols-2">
     {% if  post.user.id == user.id%}
-        <div class="col"></div>
         <div>Vous avez publié une critique</div>
         <div>{{ post.date_creation }}</div>
     {% else %}
-        <div class="col"></div>
         <div>{{ post.user.username }} a publié une critique</div>
         <div>{{ post.date_creation }}</div>
     {% endif %}
@@ -13,16 +11,14 @@
         <div>Note: {{post.note}}<span> ☆</span>
         </div>
         <div>{{ post.content }}</div>
-    </div>
+</div>
 
-    <div class="row row-cols-3"></div>
+<div class="container">
+    <div class="row row-cols-2">
     {% if  post.ticket.user.id == user.id%}
-        <div class="col"></div>
         <div>Vous avez demandé une critique</div>
-        <p>créer le :</p>
-        <div> {{post.ticket.date_creation}}</div>
+        <p>créer le : {{post.ticket.date_creation}}</p>
     {% else %}
-        <div class="col"></div>
         <div>en réponse à {{post.ticket.user.username}}</div>
         <div>{{post.ticket.date_creation}}</div>
     {% endif %}
@@ -31,4 +27,4 @@
         <h4>Description :</h4>
         <p >{{ post.ticket.description }}</p>
     </div>
-    </div>
+</div>

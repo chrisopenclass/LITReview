@@ -1,26 +1,26 @@
-   <section class="ticket">
+<div class="container">
+    <div class="row row-cols-2">
         {% if  post.user.id == user.id%}
             <div>Vous avez demandé une critique</div>
             <div>{{ post.time_created }}</div>
-        {% else %}
-
-            <div>{{ post.user.username }} a demandé une critique</div>
-            <div>{{ post.time_created }}</div>
+            {% else %}
+                <div>{{ post.user.username }} a demandé une critique</div>
+                <div>{{ post.time_created }}</div>
         {% endif %}
         <h3 >{{ post.titre }}</h3>
         <p >{{ post.description }}</p>
         {% if not post.ticket %}
             <strong><a class="btn btn-dark" href="{% url 'creer_revue_ticket' id_ticket=post.pk %}">Créer une critique</a></strong>
         {% endif %}
-    </section>
+    </div>
+</div>
 
-    <div class="row row-cols-3"></div>
+<div class="container">
+    <div class="row row-cols-2">
 {% if  post.ticket.user.id == user.id%}
-    <div class="col"></div>
     <div>Vous avez demandé une critique</div>
     <div>{{post.ticket.date_creation}}</div>
 {% else %}
-    <div class="col"></div>
     <div>{{post.ticket.user.username}} a demandé une critique</div>
     <div>{{post.ticket.date_creation}}</div>
 {% endif %}
