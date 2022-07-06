@@ -9,34 +9,27 @@
 
     <div class="d-flex justify-content-center" style="margin-top: 15px;">
         <ul class ="list-group col-md-6">
-            <div class="row row-cols-2">
-                <div> le : {{ ticket.date_creation }}</div>
+            <li class="list-group-item"> le : {{ ticket.date_creation }}</li>
             <li class="list-group-item">titre : {{ ticket.titre }}</li>
             <li class="list-group-item">description : {{ ticket.description }}</li>   
-            <strong><a class="link-primary" href="{% url 'ticket-update' ticket.pk %}">Modifier</a></strong>
-            <strong><a class="link-primary" href="{% url 'ticket-delete' ticket.pk %}">Supprimer</a></strong>
+            <li class="list-group-item"><a href="{% url 'ticket-update' ticket.pk %}">Modifier</a></li>
+            <li class="list-group-item"><a href="{% url 'ticket-delete' ticket.pk %}">Supprimer</a></li>
             </div>
-        </div>
-        </div>
-    </div>
 
     {% endfor %}
     {% comment %} Bloc review {% endcomment %}
+    <h3 style="text-align: center;">Critique que vous avez publié</h3>
     {% for review in reviews %}
-        <section class="d-flex justify-content-center" style="margin-top: 15px;">
-                <div>Vous avez publié une critique </div>
+        <div class="d-flex justify-content-center" style="margin-top: 15px;">
                 <ul class ="list-group col-md-6">
-                <div> le : {{ review.date_creation }}</div>
-                <div class="row row-cols-2">
+                    <li class="list-group-item"> le : {{ review.date_creation }}</li>
                     <li class="list-group-item">titre : {{ review.titre }}</li>
-                        <li class="list-group-item">Note: {{review.note}}<span> ☆</span> </li>
-                
+                    <li class="list-group-item">Note: {{review.note}}<span> ☆</span> </li>
                 <li class="list-group-item"> description : {{ review.content }}</li>
-                <strong><a class="link-primary" href="{% url 'review-update' review.pk %}">Modifier</a></strong>
-                <strong><a class="link-primary" href="{% url 'review-delete' review.pk %}">Supprimer</a></strong>
-        </div>
+                <li class="list-group-item"><a href="{% url 'review-update' review.pk %}">Modifier</a></li>
+                <li class="list-group-item"><a href="{% url 'review-delete' review.pk %}">Supprimer</a></li>
             </ul>
-        </section>
+        </div>
     {% endfor %}
      
 {% endblock content%}
